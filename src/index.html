@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/html" href="/css/styles.css">
+    <title>DiasBoleto</title>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <div class="card shadow">
+        <h1 style="margin-bottom: 1rem;">Dias a mais &#128640 &#128197</h1>
+        <P style="text-align:justify; margin-bottom: 1rem;" >Ferramenta para saber qual dia da semana será daqui a determinados dias
+           e quantos dias úteis existem nesse intervalo.
+        </P>
+        <p>Data inicial</p>
+        <input type="date" id="data-inicio">
+        <p style="font-size: 1.2rem;">+</p>
+        <input type="number" id="dias" placeholder="dias">
+        <button onclick="somar_dias()" class="btn-calcular">Calcular</button>
+        <p id="data-final" style="margin:10px"> </p>
+        <p id="dias-uteis"> </p>
+        <div class="credits" style="margin-top: 2rem;">        
+            <a href="https://github.com/Soljaa" target="_blank" style="color:var(--white); ;">            
+                <img src="images/icone-github-noir.png" alt="icone-github-noir">
+            </a>        
+        </div>  
+    </div>
+      
+</body>
+
+<style>
+
+:root {
+  --blue: #465C69;
+  --white: #ffffff;
+  --shadow: #333;
+  background-color: #00A676;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+.card {    
+    position: absolute;
+    left: 50%;    
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 40vw;
+    min-height: 60vh;
+    height: max-content;      
+    background: var(--blue);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    gap: 12px;
+}
+
+#data-inicio {
+  background-color: var(--white);
+  border: none;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: var(--shadow);  
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  line-height: 30px;
+  outline: none;
+}
+
+#dias {
+  background-color: var(--white);
+  border: none;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: var(--shadow); 
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  line-height: 30px;
+  outline: none;
+}
+
+.btn-calcular {
+  background-color: var(--white);
+  border: none;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: var(--shadow);
+  font-size: 16px;
+  width: 100%;
+  max-width: 120px;
+  height: 50px;
+  line-height: 30px;
+  outline: none;
+}
+
+button:hover{
+    transition: .4s;    
+    background-color: var(--white);
+    color: var(--blue);          
+}
+button:active{
+    transform: scale(0.9, 0.9);
+    transition: 0.1s; 
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 960px){
+    .card{
+        min-width: 90vw;
+    }
+}
+@media (max-width: 1500px){
+    .card{
+        min-width: 60vw;
+    }
+}
+</style>
+</html>
