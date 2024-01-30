@@ -1,65 +1,70 @@
 <!DOCTYPE html>
 <html lang="br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/html" href="/css/styles.css">
-    <title>Contador de dias</title>
-    <script src="js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/html" href="/css/styles.css">
+  <title>Contador de dias</title>
+  <script src="js/main.js"></script>
 </head>
+
 <body>
-    <div class="toggle-switch">
-        <label class="switch-label">
-          <input type="checkbox" class="checkbox">
-          <span class="slider"></span>
-        </label>
-      </div>
-    <div class="card shadow">
-        <h1 style="margin-bottom: 1rem;">Contador de dias</h1>
-        <P style="text-align:center; margin-bottom: 1rem;" >Ferramenta para calcular qual dia da semana será após determinada quantidade de dias e quantos dias úteis existem nesse intervalo.
-        </P>
-        <p>Data inicial</p>
-        <input tabindex="0" type="date" id="data-inicio">
-        <p style="font-size: 1.2rem;">+</p>
-        <input tabindex="0" type="number" id="dias" placeholder="dias">
-        <button tabindex="0" onclick="somar_dias()" class="btn-calcular">Calcular</button>
-        <p id="data-final" style="margin:10px"> </p>
-        <p id="dias-uteis"> </p>
-        <div class="credits" style="margin-top: 2rem;">        
-            <a tabindex="0" href="https://github.com/Soljaa" target="_blank" style="color:var(--light); ;">            
-                <img src="images/github-mark-white.png" alt="icone-github">
-            </a>        
-        </div>  
-    </div>      
+  <div class="toggle-switch">
+    <label class="switch-label">
+      <input type="checkbox" class="checkbox">
+      <span class="slider"></span>
+    </label>
+  </div>
+  <div class="card shadow">
+    <h1 style="margin-bottom: 1rem;">Contador de dias</h1>
+    <P style="text-align:center; margin-bottom: 1rem;">Ferramenta para calcular qual dia da semana será após determinada
+      quantidade de dias e quantos dias úteis existem nesse intervalo.
+    </P>
+    <p>Data inicial</p>
+    <input tabindex="0" type="date" id="data-inicio">
+    <p style="font-size: 1.2rem;">+</p>
+    <input tabindex="0" type="number" id="dias" placeholder="dias">
+    <button tabindex="0" onclick="somar_dias()" class="btn-calcular">Calcular</button>
+    <p id="data-final" style="margin:10px"> </p>
+    <p id="dias-uteis"> </p>
+    <p id="total-dias"> </p>
+    <p id="total-meses"> </p>
+    <p id="total-anos"> </p>
+    <div class="credits" style="margin-top: 2rem;">
+      <a tabindex="0" href="https://github.com/Soljaa" target="_blank" style="color:var(--light); ;">
+        <img src="images/github-mark-white.png" alt="icone-github">
+      </a>
+    </div>
+  </div>
 </body>
 
 <style>
+  body {
+    --red: #dc143c;
+    --light: #f8f8f8;
+    --dark: #212121;
+    --green: #070707;
+    --shadow: #333;
+    background-color: var(--dark);
+    color: #ffffff;
+  }
 
-body {
-  --red: #dc143c;
-  --light: #f8f8f8;
-  --dark: #212121;
-  --green: #070707;
-  --shadow: #333;
-  background-color: var(--dark);
-  color: #ffffff;
-}
-
-*{
+  * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: "Helvetica Neue", sans-serif;
-}
+  }
 
-.card {    
+  .card {
     position: absolute;
-    left: 50%;    
+    left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     max-width: 40%;
-    min-height: fit-content;             
+    min-height: fit-content;
     background-color: var(--green);
     border-radius: 10px;
     display: flex;
@@ -69,134 +74,145 @@ body {
     padding: 5%;
     gap: 12px;
     background: rgba(0, 0, 0, 0.8);
-}
-
-#data-inicio {
-  background-color: var(--light);
-  border: none;
-  border-radius: 10px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  color: var(--shadow);  
-  font-size: 16px;
-  padding: 10px;
-  width: 100%;
-  max-width: 300px;
-  height: 50px;
-  line-height: 30px;
-  outline: none;
-}
-
-#dias {
-  background-color: var(--light);
-  border: none;
-  border-radius: 10px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  color: var(--shadow); 
-  font-size: 16px;
-  padding: 10px;
-  width: 100%;
-  max-width: 300px;
-  height: 50px;
-  line-height: 30px;
-  outline: none;
-}
-
-.btn-calcular {
-  background-color: var(--light);
-  border: none;
-  border-radius: 10px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  color: var(--shadow);
-  font-size: 16px;
-  width: 100%;
-  max-width: 120px;
-  height: 50px;
-  line-height: 30px; 
-}
-
-button:hover{
-    transition: .4s;    
-    background-color: var(--light);             
-}
-button:active{
-    transform: scale(0.9, 0.9);
-    transition: 0.1s; 
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-@media (max-width: 683px){
-    .card{
-        width: 90%;        
-        max-width: unset;        
-    }
-}
-@media screen and (min-width: 684px) and (max-width: 1366px) {
-  .card {
-    min-width: 60%;
   }
-}
-.toggle-switch {
-  position: relative;
-  width: 100px;
-  height: 50px;    
-  transform: scale(0.5);    
-}
 
-.switch-label {
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  background-color: var(--dark);
-  border-radius: 25px;
-  cursor: pointer;
-  border: 3px solid var(--light);
-}
+  #data-inicio {
+    background-color: var(--light);
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: var(--shadow);
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    line-height: 30px;
+    outline: none;
+  }
 
-.checkbox {
-  position: absolute;
-  display: none;
-}
+  #dias {
+    background-color: var(--light);
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: var(--shadow);
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    line-height: 30px;
+    outline: none;
+  }
 
-.slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
+  .btn-calcular {
+    background-color: var(--light);
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: var(--shadow);
+    font-size: 16px;
+    width: 100%;
+    max-width: 120px;
+    height: 50px;
+    line-height: 30px;
+  }
 
-.checkbox:checked ~ .switch-label{
+  button:hover {
+    transition: .4s;
+    background-color: var(--light);
+  }
+
+  button:active {
+    transform: scale(0.9, 0.9);
+    transition: 0.1s;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  @media (max-width: 683px) {
+    .card {
+      width: 90%;
+      max-width: unset;
+      position: relative;
+      left: unset;
+      top: unset;
+      transform: translate(5.5%, 0%);
+      max-width: unset;
+      min-height: unset;
+      margin-bottom: 20px;
+    }
+  }
+
+  @media screen and (min-width: 684px) and (max-width: 1366px) {
+    .card {
+      min-width: 60%;
+    }
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    transform: scale(0.5);
+  }
+
+  .switch-label {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background-color: var(--dark);
+    border-radius: 25px;
+    cursor: pointer;
     border: 3px solid var(--light);
-}
+  }
 
-.checkbox:checked ~ .slider {
-  background-color: var(--red);   
-}
+  .checkbox {
+    position: absolute;
+    display: none;
+  }
 
-.slider::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  -webkit-box-shadow: inset 12px -4px 0px 0px var(--light);
-  box-shadow: inset 12px -4px 0px 0px var(--light);
-  background-color: var(--dark);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
+  .slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
 
-.checkbox:checked ~ .slider::before {
-  -webkit-transform: translateX(50px);
-  -ms-transform: translateX(50px);
-  transform: translateX(50px);
-  background-color: var(--light);  
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
+  .checkbox:checked~.switch-label {
+    border: 3px solid var(--light);
+  }
+
+  .checkbox:checked~.slider {
+    background-color: var(--red);
+  }
+
+  .slider::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    -webkit-box-shadow: inset 12px -4px 0px 0px var(--light);
+    box-shadow: inset 12px -4px 0px 0px var(--light);
+    background-color: var(--dark);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+
+  .checkbox:checked~.slider::before {
+    -webkit-transform: translateX(50px);
+    -ms-transform: translateX(50px);
+    transform: translateX(50px);
+    background-color: var(--light);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
 </style>
 
 </html>

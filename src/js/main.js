@@ -33,7 +33,14 @@ function somar_dias() {
         const nova_data = new Date(nova_data_timestamp)
     
         document.getElementById('data-final').textContent = 'Data final: ' + nova_data.toLocaleDateString() + ' - ' + diasDaSemana[nova_data.getDay()]
-        document.getElementById('dias-uteis').textContent = 'Dias úteis até a data final: ' + diasUteis(data_timestamp, dias)        
+        document.getElementById('dias-uteis').textContent = 'Dias úteis até a data final: ' + diasUteis(data_timestamp, dias)
+        document.getElementById('total-dias').textContent = 'Total de dias: ' + dias
+        if(dias > 30){
+            document.getElementById('total-meses').textContent = 'Total de meses: ' + Math.round(dias/30) + ' mes(es)' + ' e ' + dias%30 + ' dia(s)'
+        }
+        if(dias > 365){
+            document.getElementById('total-anos').textContent = 'Total de anos: ' + Math.round(dias/365) + ' ano(s)' + ' e ' + dias%365 + ' mes(es)'
+        }
     }
     else {
         document.getElementById('data-final').textContent = 'Digite valores válidos!'
