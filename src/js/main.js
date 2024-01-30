@@ -39,7 +39,7 @@ function somar_dias() {
             document.getElementById('total-meses').textContent = 'Total de meses: ' + Math.round(dias/30) + ' mes(es)' + ' e ' + dias%30 + ' dia(s)'
         }
         if(dias > 365){
-            document.getElementById('total-anos').textContent = 'Total de anos: ' + Math.round(dias/365) + ' ano(s)' + ' e ' + dias%365 + ' mes(es)'
+            document.getElementById('total-anos').textContent = 'Total de anos: ' + Math.round(dias/365) + ' ano(s)' + ' e ' + dias%365 + ' dia(s)'
         }
     }
     else {
